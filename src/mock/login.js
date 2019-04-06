@@ -18,7 +18,7 @@ const USER_MAP = {
 
 export const login = req => {
   req = JSON.parse(req.body)
-  return {token: USER_MAP[req.userName].token}
+  return { token: USER_MAP[req.userName].token }
 }
 
 export const getUserInfo = req => {
@@ -28,4 +28,72 @@ export const getUserInfo = req => {
 
 export const logout = req => {
   return null
+}
+export const getUserMenus = req => {
+  return [
+    // 粘贴到这里就可以了
+    // 需要把所有的component: () => import('@/view/**/*.vue')
+    // 修改为component: 'view/**/*.vue'
+    // 注意main和parent-view
+    {
+      path: '',
+      name: 'doc',
+      meta: {
+        title: '文档',
+        href: 'https://lison16.github.io/iview-admin-doc/#/',
+        icon: 'ios-book'
+      }
+    },
+    {
+      path: '/multilevel',
+      name: 'multilevel',
+      meta: {
+        icon: 'md-menu',
+        title: '多级菜单'
+      },
+      component: 'components/main',
+      children: [
+        {
+          path: 'level_2_1',
+          name: 'level_2_1',
+          meta: {
+            icon: 'md-funnel',
+            title: '二级-1'
+          },
+          component: 'view/multilevel/level-2-1.vue'
+        },
+        {
+          path: 'level_2_2',
+          name: 'level_2_2',
+          meta: {
+            access: ['super_admin'],
+            icon: 'md-funnel',
+            showAlways: true,
+            title: '二级-2'
+          },
+          component: 'components/parent-view',
+          children: [
+            {
+              path: 'level_2_2_1',
+              name: 'level_2_2_1',
+              meta: {
+                icon: 'md-funnel',
+                title: '三级'
+              },
+              component: 'view/multilevel/level-2-2/level-3-1.vue'
+            }
+          ]
+        },
+        {
+          path: 'level_2_3',
+          name: 'level_2_3',
+          meta: {
+            icon: 'md-funnel',
+            title: '二级-4'
+          },
+          component: 'view/multilevel/level-2-3.vue'
+        }
+      ]
+    }
+  ]
 }
