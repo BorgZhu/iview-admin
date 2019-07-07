@@ -35,21 +35,13 @@ export const getUserMenus = req => {
     // 需要把所有的component: () => import('@/view/**/*.vue')
     // 修改为component: 'view/**/*.vue'
     // 注意main和parent-view
-    {
-      path: '',
-      name: 'doc',
-      meta: {
-        title: '文档',
-        href: 'https://lison16.github.io/iview-admin-doc/#/',
-        icon: 'ios-book'
-      }
-    },
+
     {
       path: '/multilevel',
       name: 'multilevel',
       meta: {
         icon: 'md-menu',
-        title: '多级菜单'
+        title: '案卷期限'
       },
       component: 'components/main',
       children: [
@@ -58,42 +50,30 @@ export const getUserMenus = req => {
           name: 'level_2_1',
           meta: {
             icon: 'md-funnel',
-            title: '二级-1'
+            title: '期限综合查询'
           },
           component: 'view/multilevel/level-2-1.vue'
-        },
-        {
-          path: 'level_2_2',
-          name: 'level_2_2',
-          meta: {
-            access: ['super_admin'],
-            icon: 'md-funnel',
-            showAlways: true,
-            title: '二级-2'
-          },
-          component: 'components/parent-view',
-          children: [
-            {
-              path: 'level_2_2_1',
-              name: 'level_2_2_1',
-              meta: {
-                icon: 'md-funnel',
-                title: '三级'
-              },
-              component: 'view/multilevel/level-2-2/level-3-1.vue'
-            }
-          ]
-        },
-        {
+        }, {
           path: 'level_2_3',
           name: 'level_2_3',
           meta: {
+
             icon: 'md-funnel',
-            title: '二级-4'
+
+            title: '待扩展'
           },
-          component: 'view/multilevel/level-2-3.vue'
+          component: 'view/multilevel/level_2_3.vue'
         }
       ]
+    },
+    {
+      path: '',
+      name: 'doc',
+      meta: {
+        title: '更新文档',
+        href: 'https://lison16.github.io/iview-admin-doc/#/',
+        icon: 'ios-book'
+      }
     }
   ]
 }
