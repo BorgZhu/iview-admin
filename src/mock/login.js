@@ -70,7 +70,7 @@ export const getUserMenus = req => {
       path: '',
       name: 'doc',
       meta: {
-        title: '更新文档',
+        title: '更新日志',
         href: 'https://lison16.github.io/iview-admin-doc/#/',
         icon: 'ios-book'
       }
